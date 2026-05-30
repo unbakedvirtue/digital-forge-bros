@@ -106,13 +106,24 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} DigitalForgeBros. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground flex items-center gap-1">
-            Forged with <Flame className="w-4 h-4 text-primary" /> in California
-          </p>
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col gap-1.5 text-center md:text-left">
+            <p className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} DigitalForgeBros. All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground/60 flex items-center justify-center md:justify-start gap-1">
+              Forged with <Flame className="w-3.5 h-3.5 text-primary animate-pulse" /> in California
+            </p>
+          </div>
+          <div className="flex items-center gap-2.5 px-4 py-2 bg-[#090912]/90 backdrop-blur-md border border-primary/30 hover:border-primary/60 rounded-full shadow-[0_0_15px_rgba(255,69,0,0.12)] hover:shadow-[0_0_25px_rgba(255,69,0,0.25)] transition-all duration-300 group">
+            <div className="relative">
+              <Flame className="w-4 h-4 text-primary animate-pulse filter drop-shadow-[0_0_6px_#FF4500]" />
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-[4px] opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <span className="text-xs font-semibold tracking-wide text-gray-300">
+              Built with AI in <span className="text-secondary font-black">Riverside, CA</span> by <span className="text-primary font-black group-hover:text-primary transition-colors">DigitalForgeBros</span>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

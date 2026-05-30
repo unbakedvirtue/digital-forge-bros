@@ -6,7 +6,7 @@ import { ArrowRight, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Portfolio() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   return (
     <section id="portfolio" className="py-32 bg-[#020205] relative overflow-hidden">
@@ -16,21 +16,24 @@ export function Portfolio() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-20 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-secondary/15 blur-[100px] rounded-full z-0 pointer-events-none" />
+          <span className="text-secondary font-black text-sm tracking-widest uppercase mb-2.5 block drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]">
+            {language === "en" ? "Case Study" : "Estudio de Caso"}
+          </span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-black mb-4 relative z-10 neon-text-primary drop-shadow-[0_0_15px_rgba(255,69,0,0.45)]"
+            className="text-4xl md:text-6xl font-black mb-4 relative z-10 neon-text-primary drop-shadow-[0_0_15px_rgba(255,69,0,0.45)] text-white"
           >
-            {t("portfolio.title")}
+            {language === "en" ? "Recent Work" : "Trabajos Recientes"}
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto relative z-10"
+            className="text-xl text-muted-foreground max-w-2xl mx-auto relative z-10 font-semibold"
           >
             {t("portfolio.subtitle")}
           </motion.p>
@@ -44,11 +47,11 @@ export function Portfolio() {
           className="max-w-5xl mx-auto"
         >
           {/* Cyberpunk Bracket Container */}
-          <div className="relative p-[2px] rounded-xl overflow-hidden group">
+          <div className="relative p-[2px] rounded-xl overflow-hidden group hover:scale-[1.01] transition-transform duration-300">
             {/* Animated neon border */}
             <div className="absolute inset-0 bg-gradient-to-r from-secondary via-primary to-secondary opacity-60 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
             
-            <div className="relative bg-[#06060c]/90 backdrop-blur-md rounded-xl overflow-hidden border border-border/50">
+            <div className="relative bg-[#06060c]/95 backdrop-blur-md rounded-xl overflow-hidden border border-border/50 shadow-[0_0_35px_rgba(0,240,255,0.08)] group-hover:shadow-[0_0_45px_rgba(0,240,255,0.2)] transition-shadow duration-300">
               {/* Cyberpunk Tech UI overlays */}
               <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-secondary z-20 pointer-events-none shadow-[0_0_8px_rgba(0,240,255,0.4)]" />
               <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-secondary z-20 pointer-events-none shadow-[0_0_8px_rgba(0,240,255,0.4)]" />
@@ -57,7 +60,7 @@ export function Portfolio() {
               
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* Image Section */}
-                <div className="relative h-[320px] lg:h-auto overflow-hidden">
+                <div className="relative h-[360px] lg:h-auto overflow-hidden">
                   {/* Scanline Overlay over image */}
                   <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,240,255,0.06)_50%)] bg-[length:100%_4px] z-10 pointer-events-none mix-blend-screen opacity-50" />
                   
@@ -74,10 +77,10 @@ export function Portfolio() {
                 <div className="p-8 lg:p-12 flex flex-col justify-center relative">
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,240,255,0.02)_25%,rgba(0,240,255,0.02)_50%,transparent_50%,transparent_75%,rgba(0,240,255,0.02)_75%,rgba(0,240,255,0.02)_100%)] bg-[length:20px_20px] pointer-events-none z-0" />
                   
-                  <h3 className="text-3.5xl font-black mb-4 relative z-10 text-foreground group-hover:text-primary transition-colors duration-300 glitch-hover">
+                  <h3 className="text-3.5xl md:text-4xl font-black mb-4 relative z-10 text-foreground group-hover:text-primary transition-colors duration-300 glitch-hover">
                     {t("portfolio.flagship.title")}
                   </h3>
-                  <p className="text-muted-foreground mb-8 text-lg leading-relaxed relative z-10">
+                  <p className="text-muted-foreground mb-8 text-lg leading-relaxed relative z-10 font-medium">
                     {t("portfolio.flagship.desc")}
                   </p>
                   
@@ -92,9 +95,22 @@ export function Portfolio() {
                     </div>
                   </div>
 
-                  <Button className="w-fit relative z-10 gap-2 border border-primary hover:border-secondary hover:shadow-[0_0_20px_rgba(255,69,0,0.6)] transition-all duration-300" size="lg" asChild>
+                  <div className="mb-8 relative z-10 p-5 bg-[#030307]/90 border border-secondary/25 rounded-lg flex flex-col gap-1.5 transition-all duration-300 shadow-[inset_0_0_12px_rgba(0,240,255,0.05),0_0_15px_rgba(0,240,255,0.05)] hover:border-secondary/50 hover:shadow-[inset_0_0_20px_rgba(0,240,255,0.15),0_0_25px_rgba(0,240,255,0.15)] group/link">
+                    <span className="text-xs font-black uppercase tracking-widest text-secondary/60">Live Production Link</span>
+                    <a 
+                      href="https://romanpaintingriverside.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-lg md:text-xl font-extrabold text-white hover:text-secondary transition-colors flex items-center gap-2 group/url"
+                    >
+                      <span className="underline decoration-secondary/30 group-hover/url:decoration-secondary">https://romanpaintingriverside.com</span>
+                      <ExternalLink className="w-5 h-5 text-secondary group-hover/url:translate-x-0.5 group-hover/url:-translate-y-0.5 transition-transform" />
+                    </a>
+                  </div>
+
+                  <Button className="w-full sm:w-fit relative z-10 gap-2 bg-gradient-to-r from-primary to-orange-600 hover:from-primary hover:to-orange-700 border-none text-white font-black shadow-[0_0_20px_rgba(255,69,0,0.4)] hover:shadow-[0_0_30px_rgba(255,69,0,0.7)] transition-all duration-300 hover:scale-[1.03] text-lg px-8 h-14" size="lg" asChild>
                     <a href="https://romanpaintingriverside.com" target="_blank" rel="noopener noreferrer">
-                      {t("portfolio.flagship.link")} <ExternalLink className="w-4 h-4" />
+                      View Live Project <ExternalLink className="w-5 h-5" />
                     </a>
                   </Button>
                 </div>

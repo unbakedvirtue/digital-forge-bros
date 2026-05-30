@@ -42,16 +42,16 @@ export function Navbar() {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#020205]/85 backdrop-blur-lg border-b border-secondary/20 shadow-[0_4px_30px_rgba(0,240,255,0.08)] py-1.5"
+          ? "bg-[#020205]/85 backdrop-blur-lg border-b border-secondary/20 shadow-[0_4px_30px_rgba(0,240,255,0.08)] py-2"
           : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center transition-all duration-300 hover:scale-105 relative group">
+          <Link href="/" className="flex items-center transition-all duration-300 hover:scale-103 relative group">
             {/* Dynamic Forge Back-Glow */}
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[60px] bg-gradient-to-r from-secondary/20 via-orange-500/8 to-primary/20 rounded-full blur-[18px] pointer-events-none z-0"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[80px] bg-gradient-to-r from-secondary/20 via-orange-500/8 to-primary/20 rounded-full blur-[20px] pointer-events-none z-0"
               animate={{
                 opacity: [0.5, 0.85, 0.5],
                 scale: [0.95, 1.1, 0.95]
@@ -67,7 +67,7 @@ export function Navbar() {
                     key={i}
                     className="absolute w-[3px] h-[3px] rounded-full bg-gradient-to-r from-primary to-orange-500 shadow-[0_0_6px_#FF4500]"
                     initial={{
-                      x: 40 + Math.random() * 240,
+                      x: 40 + Math.random() * 320,
                       y: 55,
                       opacity: 0,
                       scale: 0.5
@@ -92,9 +92,9 @@ export function Navbar() {
             <motion.div
               animate={{ 
                 filter: [
-                  "drop-shadow(-6px 0px 8px rgba(0, 240, 255, 0.6)) drop-shadow(6px 0px 8px rgba(255, 69, 0, 0.6))",
-                  "drop-shadow(-10px 0px 16px rgba(0, 240, 255, 0.95)) drop-shadow(10px 0px 16px rgba(255, 69, 0, 0.95))",
-                  "drop-shadow(-6px 0px 8px rgba(0, 240, 255, 0.6)) drop-shadow(6px 0px 8px rgba(255, 69, 0, 0.6))"
+                  "drop-shadow(-10px 0px 15px rgba(0, 240, 255, 0.75)) drop-shadow(10px 0px 15px rgba(255, 69, 0, 0.75))",
+                  "drop-shadow(-18px 0px 28px rgba(0, 240, 255, 0.98)) drop-shadow(18px 0px 28px rgba(255, 69, 0, 0.98))",
+                  "drop-shadow(-10px 0px 15px rgba(0, 240, 255, 0.75)) drop-shadow(10px 0px 15px rgba(255, 69, 0, 0.75))"
                 ]
               }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -103,9 +103,9 @@ export function Navbar() {
               <Image 
                 src="/images/dfb-logo.png" 
                 alt="DigitalForgeBros Logo" 
-                width={320} 
-                height={96} 
-                className="object-contain h-[72px] w-auto"
+                width={400} 
+                height={120} 
+                className={`object-contain transition-all duration-300 w-auto ${isScrolled ? "h-[96px]" : "h-[128px]"}`}
                 style={{
                   mixBlendMode: "screen"
                 }}

@@ -10,13 +10,20 @@ import Image from "next/image"
 export function Hero() {
   const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#020205]">
+    <section className="relative min-h-screen flex items-center justify-center pt-48 pb-16 md:pt-24 md:pb-0 overflow-hidden bg-[#020205]">
       {/* High-End Subtle Background Image Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div 
@@ -63,7 +70,7 @@ export function Hero() {
           {/* Drifting Sparks/Embers rising behind the Hero Logo */}
           {mounted && (
             <div className="absolute -top-40 -bottom-20 left-0 right-0 pointer-events-none overflow-visible z-0" suppressHydrationWarning={true}>
-              {[...Array(28)].map((_, i) => (
+              {[...Array(isMobile ? 12 : 28)].map((_, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-primary to-orange-500 shadow-[0_0_15px_rgba(255,69,0,0.85)]"
@@ -121,7 +128,7 @@ export function Hero() {
           {/* Drifting Sparks/Embers rising OVER the Hero Logo */}
           {mounted && (
             <div className="absolute -top-40 -bottom-20 left-0 right-0 pointer-events-none overflow-visible z-20" suppressHydrationWarning={true}>
-              {[...Array(16)].map((_, i) => (
+              {[...Array(isMobile ? 8 : 16)].map((_, i) => (
                 <motion.div
                   key={`front-${i}`}
                   className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-300 shadow-[0_0_18px_#FFA500,0_0_30px_#FF4500]"
@@ -156,7 +163,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-[800px] text-lg md:text-2xl text-gray-300 mb-10 font-medium leading-relaxed drop-shadow-md"
+          className="max-w-[800px] text-xl md:text-2xl text-gray-300 mb-10 font-semibold leading-relaxed drop-shadow-md px-4"
         >
           {t("hero.subheadline")}
         </motion.p>
@@ -179,7 +186,7 @@ export function Hero() {
       {/* Digital Data Particles */}
       {mounted && (
         <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden mix-blend-screen">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(isMobile ? 8 : 20)].map((_, i) => (
             <motion.div
               key={i}
               className={`absolute w-1 h-3 rounded-[1px] ${i % 2 === 0 ? 'bg-secondary/70' : 'bg-primary/70'} blur-[0.5px]`}
