@@ -12,6 +12,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "DigitalForgeBros | Forging Digital Excellence",
   description: "AI-powered, lightning-fast websites for local service businesses.",
+  verification: {
+    google: "eQsR0g5caq6Ok_QZnyeMwZ5bey8TNLMpQgoKC92xzew",
+  },
 };
 
 export default function RootLayout({
